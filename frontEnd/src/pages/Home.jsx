@@ -11,7 +11,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:5555/books")
+    axios
+      .get("http://localhost:5555/books")
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);
@@ -25,7 +26,7 @@ const Home = () => {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-3x1 my-8">Books List</h1>
+        <h1 className="text-3x1 my-8 ">Books List</h1>
         <Link to="/books/create">
           <MdOutlineAddBox className="text-sky-800 text-4xl" />
         </Link>
@@ -34,7 +35,7 @@ const Home = () => {
         <Spinner />
       ) : (
         <table className="w-full border-separate border-spacing-2">
-          <thread>
+          <thead>
             <tr>
               <th className="border border-slate-600 rounded-md">No</th>
               <th className="border border-slate-600 rounded-md">Title</th>
@@ -51,7 +52,7 @@ const Home = () => {
                 Operations
               </th>
             </tr>
-          </thread>
+          </thead>
           <tbody>
             {books.map((book, index) => (
               <tr key={book._id} className="h-8">
