@@ -29,11 +29,11 @@ router.post('/', async (request , response ) =>{
         response.status(500).send({message: error.message})
     }
 })
-router.put('//:id', async (request , response ) =>{
+router.put('/:id', async (request , response ) =>{
     try{
         if(
-            !request.body.title 
-            || !request.body.author ||
+            !request.body.title ||
+            !request.body.author ||
             !request.body.publishYear ||
             !request.body.pages 
         ){
